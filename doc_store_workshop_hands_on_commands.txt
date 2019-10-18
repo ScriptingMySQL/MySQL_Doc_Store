@@ -1,0 +1,44 @@
+These are the commands for the hands-on audience participation.
+
+1.	# mysqlsh root@127.0.0.1
+
+2.	session.createSchema("workshop")
+
+3.	\use workshop
+
+4.	db.createCollection("foods")
+
+5.	db.foods.add({Name_First: "Bruce", Name_Last: "Wayne", favorite_food: {Breakfast: "bagel with cream cheese", Lunch: "hamburger with fries", Dinner: "lasagne with garlic bread"}})
+
+6.	db.foods.find()
+
+7.	db.foods.find('Name_First = "Bruce"')
+
+8.	db.foods.find('Name_First = "Jason"')
+
+9.	db.foods.find('Name_First = "Bruce"').fields('favorite_food')
+
+10.	db.foods.find('Name_First = "Bruce"').fields("favorite_food", "Name_Last")
+
+11.	db.foods.add({Name_First: "Selena", Name_Last: "Kyle", favorite_food: {Breakfast: "bagel with cream cheese and lox", Lunch: "Grouper sandwich", Dinner: "Fish and chips"}})
+
+12.	db.foods.find( 'Name_First = "Selena"' ).fields( "favorite_food.Breakfast" )
+
+13.	db.foods.modify("Name_First = 'Bruce'").set("favorite_food", {Lunch: "Soup in a bread bowl", Dinner: "steak and broccoli"})
+
+14.	db.foods.find('Name_First = "Bruce"')
+
+15.	db.foods.find("Name_First='Selena'")
+
+16.	db.foods.modify("Name_First = 'Selena'").set('favorite_food.Dinner', 'Salmon nigiri sushi')
+
+17.	db.foods.find("Name_First='Selena'")
+
+18. var schema = session.getSchema('workshop')
+
+19.	var collection = schema.getCollection('foods')
+
+20.	collection.modify("Name_First = 'Selena'").patch({ Name_Middle: 'Kitty' })
+
+21.	db.foods.find('Name_First = "Selena"')
+
